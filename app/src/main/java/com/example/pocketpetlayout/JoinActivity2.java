@@ -26,7 +26,7 @@ public class JoinActivity2 extends AppCompatActivity {
         MyDbHelper myDbHelper = new MyDbHelper(getApplicationContext());
         database = myDbHelper.getWritableDatabase();
 
-        Button nextbtn = (Button) findViewById(R.id.nextbtn);
+        Button nextbtn = (Button) findViewById(R.id.nextbtn3);
         EditText email1 = (EditText) findViewById(R.id.email1);
         EditText password2 = (EditText) findViewById(R.id.password2);
         EditText password3 = (EditText) findViewById(R.id.password3);

@@ -29,6 +29,7 @@
         <entry key="..\:/AndroidStudioProjects/PocketPetLayout/PocketPetLayout/app/src/main/res/layout/activity_best_board.xml" value="0.1773049645390071" />
         <entry key="..\:/AndroidStudioProjects/PocketPetLayout/PocketPetLayout/app/src/main/res/layout/activity_board.xml" value="0.11347517730496454" />
         <entry key="..\:/AndroidStudioProjects/PocketPetLayout/PocketPetLayout/app/src/main/res/layout/activity_board_contents.xml" value="0.22" />
+        <entry key="..\:/AndroidStudioProjects/PocketPetLayout/PocketPetLayout/app/src/main/res/layout/activity_board_update.xml" value="0.38645833333333335" />
         <entry key="..\:/AndroidStudioProjects/PocketPetLayout/PocketPetLayout/app/src/main/res/layout/activity_bookmark.xml" value="0.1773049645390071" />
         <entry key="..\:/AndroidStudioProjects/PocketPetLayout/PocketPetLayout/app/src/main/res/layout/activity_comm_list_item.xml" value="0.25" />
         <entry key="..\:/AndroidStudioProjects/PocketPetLayout/PocketPetLayout/app/src/main/res/layout/activity_customer.xml" value="0.1773049645390071" />
@@ -59,7 +60,7 @@
         <entry key="..\:/AndroidStudioProjects/PocketPetLayout/PocketPetLayout/app/src/main/res/layout/fragment_bookmark.xml" value="0.1773049645390071" />
         <entry key="..\:/AndroidStudioProjects/PocketPetLayout/PocketPetLayout/app/src/main/res/layout/fragment_cam.xml" value="0.33" />
         <entry key="..\:/AndroidStudioProjects/PocketPetLayout/PocketPetLayout/app/src/main/res/layout/fragment_feed.xml" value="0.1773049645390071" />
-        <entry key="..\:/AndroidStudioProjects/PocketPetLayout/PocketPetLayout/app/src/main/res/layout/fragment_home.xml" value="0.18432971014492755" />
+        <entry key="..\:/AndroidStudioProjects/PocketPetLayout/PocketPetLayout/app/src/main/res/layout/fragment_home.xml" value="0.25" />
         <entry key="..\:/AndroidStudioProjects/PocketPetLayout/PocketPetLayout/app/src/main/res/layout/fragment_profile.xml" value="0.23958333333333334" />
         <entry key="..\:/AndroidStudioProjects/PocketPetLayout/PocketPetLayout/app/src/main/res/layout/main_activity.xml" value="0.1773049645390071" />
         <entry key="..\:/AndroidStudioProjects/PocketPetLayout/PocketPetLayout/app/src/main/res/menu/joinprofile_menu.xml" value="0.1671875" />

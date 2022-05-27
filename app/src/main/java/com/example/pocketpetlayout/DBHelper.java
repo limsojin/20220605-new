@@ -44,6 +44,16 @@ public class DBHelper extends SQLiteOpenHelper {
         return true;
     }
 
+    public boolean updateBoardContents(int Id, String title, String imgName, String category, String mainTxt){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(Board.COLUMN_TITLE, title);
+        contentValues.put(Board.COLUMN_IMAGE, imgName);
+        contentValues.put(Board.COLUMN_MAINTEXT, mainTxt);
+        db.update(Board.TABLE_NAME, contentValues, Board.COLUMN_BOARD_ID + "=" + Id, null);
+        return true;
+    }
+
     public boolean deleteBoardToPK(int Id){
         SQLiteDatabase db = this.getWritableDatabase();
         db.execSQL(" DELETE FROM " + Board.TABLE_NAME + " WHERE " + Board.COLUMN_BOARD_ID + " = "  + Id + " ;" );

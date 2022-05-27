@@ -58,8 +58,7 @@ public class ProfileFix extends AppCompatActivity {
                 finish();
                 return true;
             case R.id.toolbar_check: // 체크 버튼을 통해 반려동물 프로필로 이동
-                Intent intent = new Intent(getApplicationContext(), ProfileFragment.class);
-                startActivity(intent);
+                finish();
                 return true;
         }
         return super.onOptionsItemSelected(item);

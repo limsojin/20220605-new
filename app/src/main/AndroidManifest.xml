@@ -13,6 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PocketPetLayout">
         <activity
+            android:name=".BoardUpdateActivity"
+            android:exported="false" />
+        <activity
             android:name=".ProfileFix"
             android:exported="false" />
         <activity
@@ -22,7 +25,7 @@
             android:name=".PetProfileCheck"
             android:exported="false" />
         <activity
-            android:name=".petProfile"
+            android:name=".PetProfile"
             android:exported="false" />
         <activity
             android:name=".FeedWriteActivity"

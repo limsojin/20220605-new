@@ -118,7 +118,7 @@ public class HomeFragment extends Fragment {
         //-----------
 
         //펫 텍스트
-        petname = "토리";
+        petname = "율무";
         petText = view.findViewById(R.id.PetText);
         petText.setText("안녕, " + petname + "! \n" +
                 "아픈 곳은 없니?");

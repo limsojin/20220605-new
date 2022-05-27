@@ -38,6 +38,7 @@ public class BoardContentsActivity extends AppCompatActivity {
 
     int boardId;
     String imgName;
+    String writer;
     ImageView imgView;
     TextView titleView;
     TextView nickname;
@@ -50,6 +51,7 @@ public class BoardContentsActivity extends AppCompatActivity {
     EditText comentText;
     Button sendComm;
     Button delBoard;
+    Button upBoard;
 
     //하단 버튼 없애기
     private View decorView;
@@ -96,6 +98,7 @@ public class BoardContentsActivity extends AppCompatActivity {
         sendComm = findViewById(R.id.sendComment);
         heartBtn = findViewById(R.id.heartBtn);
         delBoard = findViewById(R.id.delBtn);
+        upBoard = findViewById(R.id.upBtn);
 
         //하단 버튼을 없애는 기능
         decorView = getWindow().getDecorView();
@@ -109,6 +112,7 @@ public class BoardContentsActivity extends AppCompatActivity {
         decorView.setSystemUiVisibility(uiOption);
         //---------------------
 
+        //하트(좋아요) 버튼
         heartBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -130,8 +134,9 @@ public class BoardContentsActivity extends AppCompatActivity {
                 overridePendingTransition(0, 0);//인텐트 효과 없애기
             }
         });
+        //------------------------------
 
-
+        //댓글 작성
         sendComm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -180,8 +185,9 @@ public class BoardContentsActivity extends AppCompatActivity {
                 }
             }
         });
+        //----------------------
 
-
+        // 글 삭제 버튼
         delBoard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -198,6 +204,25 @@ public class BoardContentsActivity extends AppCompatActivity {
 
             }
         });
+        //-------------------
+
+        //글 수정 버튼
+        upBoard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                String titleStr = titleView.getText().toString();
+                String contentStr = contentView.getText().toString();
+
+                Intent intent = new Intent(getApplicationContext(),BoardUpdateActivity.class);
+                intent.putExtra("boardId", boardId);
+                intent.putExtra("title", titleStr);
+                intent.putExtra("content", contentStr);
+                startActivity(intent);
+
+            }
+        });
+        //-------------------
 
 
         //게시글 내용 가져옴
@@ -255,7 +280,7 @@ public class BoardContentsActivity extends AppCompatActivity {
         if(c.moveToFirst()){
             do{
                 String title = c.getString(1);
-                String writer = c.getString(2);
+                writer = c.getString(2);
                 imgName = c.getString(3);
                 String contents = c.getString(4);
                 comm_cnt = c.getInt(5);

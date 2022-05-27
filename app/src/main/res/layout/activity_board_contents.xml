@@ -92,7 +92,7 @@
 
                 <TextView
                     android:id="@+id/titleView"
-                    android:layout_width="300dp"
+                    android:layout_width="280dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:background="@drawable/box_border"
@@ -105,10 +105,19 @@
                     ></TextView>
 
                 <android.widget.Button
-                    android:id="@+id/delBtn"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/upBtn"
+                    android:layout_width="50dp"
                     android:layout_height="wrap_content"
-                    android:text="글 삭제"
+                    android:text="수정"
+                    android:textColor="@color/white"
+                    android:backgroundTint="#9777D8">
+                </android.widget.Button>
+
+                <android.widget.Button
+                    android:id="@+id/delBtn"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:text="삭제"
                     android:textColor="@color/white"
                     android:backgroundTint="#9777D8">
                 </android.widget.Button>
