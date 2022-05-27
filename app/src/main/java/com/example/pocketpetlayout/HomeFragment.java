@@ -65,6 +65,7 @@ public class HomeFragment extends Fragment {
     private int	uiOption;
     String username;
     String petname;
+    String Id;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -83,6 +84,8 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
+
+        myDbHelper = new MyDbHelper(getContext());
 
         fragmentManager = getFragmentManager();
         feedFragment = new FeedFragment();
@@ -110,15 +113,15 @@ public class HomeFragment extends Fragment {
             petImage.setClipToOutline(true); }
         //----------
 
+        HomeInit(view);
+
         //사용자 텍스트
-        username = "김유저";
         userText = view.findViewById(R.id.UserText);
         userText.setText("안녕하세요," + username + "님! \n" +
                 "반려동물과 잘 지내고 계신가요?");
         //-----------
 
         //펫 텍스트
-        petname = "율무";
         petText = view.findViewById(R.id.PetText);
         petText.setText("안녕, " + petname + "! \n" +
                 "아픈 곳은 없니?");
@@ -212,10 +215,46 @@ public class HomeFragment extends Fragment {
     }
     //-------------------
 
+    public void HomeInit(View view){
+
+        SQLiteDatabase db2 = myDbHelper.getReadableDatabase();
+        Cursor c1 = db2.rawQuery( "SELECT " +
+                Member.NICKNAME + " , " +
+                Member.MEMBER_ID + " FROM " + Member.TABLE_NAME + " ;" , null);
+
+        if (c1.moveToFirst()) {
+
+            do{
+                username = c1.getString(0);
+                Id = c1.getString(1);
+
+            }while (c1.moveToNext());
+        }
+        c1.close();
+        db2.close();
+
+        SQLiteDatabase db3 = myDbHelper.getReadableDatabase();
+        Cursor c2 = db3.rawQuery( "SELECT " +
+                Pet.PET_NAME + " FROM " + Pet.TABLE_NAME +
+                " ; " , null);
+
+        if (c2.moveToFirst()) {
+
+            do{
+                petname = c2.getString(0);
+
+            }while (c2.moveToNext());
+        }
+        c2.close();
+        db3.close();
+
+    }
+
     //QnA 관련 함수
     public void firstQnAInit(View view){
         mQnaView = (RecyclerView) view.findViewById(R.id.QnaView);
         mQnAList = new ArrayList<QnAItem>();
+
 
         SQLiteDatabase db = dbHelper.getReadableDatabase();
         Cursor c = db.rawQuery("SELECT " +
@@ -249,7 +288,7 @@ public class HomeFragment extends Fragment {
 
         SQLiteDatabase db = myDbHelper.getReadableDatabase();
         Cursor c = db.rawQuery("SELECT " + Feed.IMAGE + " FROM " + Feed.TABLE_NAME
-                                    + " ORDER BY " + Feed.FEED_ID + " DESC ;", null );
+                                    + ";", null );
 
         if (c.moveToFirst()) {
             do{

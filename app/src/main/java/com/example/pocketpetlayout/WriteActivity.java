@@ -160,7 +160,7 @@ public class WriteActivity extends AppCompatActivity {
 
                 ContentValues board = new ContentValues();
                 board.put(Board.COLUMN_TITLE, titleStr);
-                board.put(Board.COLUMN_WRITER, "kyj");
+                board.put(Board.COLUMN_WRITER, "쌈무");
                 board.put(Board.COLUMN_IMAGE, imgName);
                 board.put(Board.COLUMN_MAINTEXT, contentStr);
                 board.put(Board.COLUMN_COMMENT_CNT, 0);

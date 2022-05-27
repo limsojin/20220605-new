@@ -32,12 +32,13 @@ public class MyBoardActivity extends AppCompatActivity {
 
     //DB
     DBHelper dbHelper;
+    MyDbHelper myDbHelper;
 
     //게시글 리스트
     ArrayList<BoardItem> My_BoardItems;
 
     //유저 이름!!!! 지정해줄 필요가 있습니다.
-    String username = "kyj";
+    String username;
 
     @Override
     protected void onResume() {
@@ -72,6 +73,7 @@ public class MyBoardActivity extends AppCompatActivity {
 
         //DBHelper
         dbHelper = new DBHelper(getApplicationContext());
+        myDbHelper = new MyDbHelper(getApplicationContext());
 
         //ListView에 QnA 게시글 나열하기위한 데이터 초기화
         InitializeQnABoardData();
@@ -142,6 +144,21 @@ public class MyBoardActivity extends AppCompatActivity {
         My_BoardItems = new ArrayList<BoardItem>();
 
         // board 테이블에서 kyj 유저가 writer인 튜플의 id, title, writer, reg_date, like_cnt, com_cnt 를 가져온다.
+        SQLiteDatabase db2 = myDbHelper.getReadableDatabase();
+        Cursor c1 = db2.rawQuery( "SELECT " +
+                Member.NICKNAME + " , " +
+                Member.MEMBER_ID + " FROM " + Member.TABLE_NAME + " ;" , null);
+
+        if (c1.moveToFirst()) {
+
+            do{
+                username = c1.getString(0);
+                Log.i(TAG, "글쓴이 : " + username);
+
+            }while (c1.moveToNext());
+        }
+        c1.close();
+        db2.close();
 
         SQLiteDatabase db = dbHelper.getReadableDatabase();
         Cursor c = db.rawQuery("SELECT " +
