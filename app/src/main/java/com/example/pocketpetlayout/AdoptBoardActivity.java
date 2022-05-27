@@ -38,8 +38,8 @@ public class AdoptBoardActivity extends AppCompatActivity {
     ArrayList<BoardItem> Adopt_BoardItems;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void onResume() {
+        super.onResume();
         setContentView(R.layout.activity_adopt_board);
 
 
@@ -76,16 +76,16 @@ public class AdoptBoardActivity extends AppCompatActivity {
 
         if(!Adopt_BoardItems.isEmpty()) {
             //Listview 지정
-            ListView qnaListView = this.findViewById(R.id.adoptListView);
+            ListView adoptListView = this.findViewById(R.id.adoptListView);
 
             // ListView Adpater 지정
             final BoardAdapter boardAdapter = new BoardAdapter(this, Adopt_BoardItems);
 
             // ListView의 어뎁터를 셋한다.
-            qnaListView.setAdapter(boardAdapter);
+            adoptListView.setAdapter(boardAdapter);
 
             //ListView 내부 아이템이 클릭 되었을 경우?
-            qnaListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            adoptListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
 

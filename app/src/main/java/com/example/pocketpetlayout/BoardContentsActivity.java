@@ -1,5 +1,6 @@
 package com.example.pocketpetlayout;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -63,10 +64,9 @@ public class BoardContentsActivity extends AppCompatActivity {
     ArrayList<CommentItem> commentItems;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void onResume() {
         setContentView(R.layout.activity_board_contents);
-
+        super.onResume();
         setSupportActionBar(toolbar);
 
         //툴바만들기

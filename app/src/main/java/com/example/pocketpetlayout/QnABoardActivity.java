@@ -38,8 +38,8 @@ public class QnABoardActivity extends AppCompatActivity {
     ArrayList<BoardItem> QnA_BoardItems;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void onResume() {
+        super.onResume();
         setContentView(R.layout.activity_qna_board);
 
 

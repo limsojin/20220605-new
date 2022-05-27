@@ -52,7 +52,7 @@
 
     <!-- 리스트뷰 -->
     <ListView
-        android:id="@+id/listView"
+        android:id="@+id/myListView"
         android:layout_width="360dp"
         android:layout_height="wrap_content"
         app:layout_constraintLeft_toRightOf="@id/guideline2"

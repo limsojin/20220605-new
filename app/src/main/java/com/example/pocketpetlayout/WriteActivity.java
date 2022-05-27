@@ -34,6 +34,10 @@ import java.sql.Date;
 public class WriteActivity extends AppCompatActivity {
     public static final String TAG = "WriteActivity";
 
+    //하단 버튼 없애기
+    private View decorView;
+    private int uiOption;
+
     //카테고리
     Spinner categorySpin;
     ArrayAdapter arrayAdapt;
@@ -44,8 +48,6 @@ public class WriteActivity extends AppCompatActivity {
     Button u_Btn;
     Button d_Btn;
     TextView getImgBtn;
-
-
 
     //사진 등록
     ImageView imgView;
@@ -64,6 +66,19 @@ public class WriteActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_write);
+
+        //하단 버튼을 없애는 기능
+        decorView = getWindow().getDecorView();
+        uiOption = getWindow().getDecorView().getSystemUiVisibility();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH)
+            uiOption |= View.SYSTEM_UI_FLAG_HIDE_NAVIGATION;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+            uiOption |= View.SYSTEM_UI_FLAG_FULLSCREEN;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT)
+            uiOption |= View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY;
+        decorView.setSystemUiVisibility(uiOption);
+        //---------------------
+
 
         //등록 수정 삭제 버튼
         c_Btn = findViewById(R.id.c_button);
@@ -145,7 +160,7 @@ public class WriteActivity extends AppCompatActivity {
 
                 ContentValues board = new ContentValues();
                 board.put(Board.COLUMN_TITLE, titleStr);
-                board.put(Board.COLUMN_WRITER, "user");
+                board.put(Board.COLUMN_WRITER, "kyj");
                 board.put(Board.COLUMN_IMAGE, imgName);
                 board.put(Board.COLUMN_MAINTEXT, contentStr);
                 board.put(Board.COLUMN_COMMENT_CNT, 0);

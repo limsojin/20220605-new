@@ -39,8 +39,8 @@ public class FreeBoardActivity extends AppCompatActivity {
     ArrayList<BoardItem> Free_BoardItems;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void onResume() {
+        super.onResume();
         setContentView(R.layout.activity_free_board);
 
 
