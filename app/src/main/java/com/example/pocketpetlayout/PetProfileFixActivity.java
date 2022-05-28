@@ -114,6 +114,7 @@ public class PetProfileFixActivity extends AppCompatActivity {
         //---------------------
 
         DBInfo();
+        
         // 상단 툴바
         Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);

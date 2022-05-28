@@ -66,10 +66,13 @@ public class AddPetActivity extends AppCompatActivity {
                     }
                 }
 
-                /*
-                Intent intent = new Intent();
+
+                Intent intent = new Intent(getApplicationContext(), PetProfileAddActivity.class);
+                intent.putExtra("petname", petnickSt);
+                intent.putExtra("petbirthday", petbirthDay);
+                intent.putExtra("petgender", petgender);
                 startActivity(intent);
-                */
+
             }
         });
     }

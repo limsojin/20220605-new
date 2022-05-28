@@ -1,30 +1,34 @@
 package com.example.pocketpetlayout;
 
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
+import android.widget.TextView;
 
-public class PetProfileCheckActivity extends AppCompatActivity {
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
+public class PetProfileAddActivity extends AppCompatActivity {
 
     //하단 버튼 없애기
     private View decorView;
     private int	uiOption;
 
-    Button addBtn;
+    String petname;
+    String petbirthday;
+    String petgender;
+
+    TextView petTxt;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pet_profile_check);
+        setContentView(R.layout.activity_pet_profile_add);
 
         //하단 버튼을 없애는 기능
         decorView = getWindow().getDecorView();
@@ -45,17 +49,17 @@ public class PetProfileCheckActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayShowTitleEnabled(false);
 
-        addBtn = findViewById(R.id.PetPlusButton);
+        petTxt = findViewById(R.id.PetTextView2);
 
-        addBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), AddPetActivity.class);
-                startActivity(intent);
-            }
-        });
+        petname = getIntent().getStringExtra("petname");
+        int a = getIntent().getIntExtra("petbirthday",0);
+        petbirthday = String.valueOf(a);
+        petgender = getIntent().getStringExtra("petgender");
+
+        petTxt.setText(petname);
 
     }
+
     //체크 메뉴
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -69,7 +73,10 @@ public class PetProfileCheckActivity extends AppCompatActivity {
                 finish();
                 return true;
             case R.id.toolbar_check: // 체크 버튼을 통해 반려동물 프로필로 이동
-                Intent intent = new Intent(getApplicationContext(), PetProfileActivity.class);
+                Intent intent = new Intent(getApplicationContext(), PetProfileActivity2.class);
+                intent.putExtra("petname", petname);
+                intent.putExtra("petbirthday", petbirthday);
+                intent.putExtra("petgender", petgender);
                 startActivity(intent);
                 return true;
         }

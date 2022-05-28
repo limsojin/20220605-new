@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.pocketpetlayout">
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.CAMERA" />
+
     <uses-feature
         android:name="android.hardware.camera"
-        android:required="false"/>
+        android:required="false" />
 
     <application
         android:allowBackup="true"
@@ -16,15 +18,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PocketPetLayout">
+        <activity
+            android:name=".PetProfileActivity2"
+            android:exported="false" />
+
         <provider
-            android:authorities="com.example.pocketpetlayout"
             android:name="androidx.core.content.FileProvider"
+            android:authorities="com.example.pocketpetlayout"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/external"/>
+                android:resource="@xml/external" />
         </provider>
+
         <activity
             android:name=".AddPetActivity"
             android:exported="false" />
@@ -41,8 +48,15 @@
             android:name=".PetProfileCheckActivity"
             android:exported="false" />
         <activity
+            android:name=".PetProfileAddActivity"
+            android:exported="false" />
+        <activity
             android:name=".PetProfileActivity"
             android:exported="false" />
+        <activity
+            android:name=".PetProfileActivity2"
+            android:exported="false"
+            tools:ignore="DuplicateActivity" />
         <activity
             android:name=".FeedWriteActivity"
             android:exported="false" />
