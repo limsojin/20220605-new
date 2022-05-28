@@ -1,13 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".JoinActivity3"
+    tools:context=".JoinActivity4"
     android:orientation="vertical"
     android:background="@color/white">
 
-    <!--상단의 툴바 입니다. -->
     <androidx.appcompat.widget.Toolbar
         app:layout_constraintTop_toTopOf="parent"
         android:id="@+id/toolbar"
@@ -24,12 +24,12 @@
             android:textColor="#9777D8"
             android:textStyle="bold"
             android:textSize="35dp"
-            android:text="회원가입"/>
+            android:text="반려동물 추가"/>
 
     </androidx.appcompat.widget.Toolbar>
 
     <ImageView
-        android:id="@+id/pro"
+        android:id="@+id/pro2"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:src="@drawable/pro"
@@ -37,33 +37,18 @@
         >
     </ImageView>
 
-    <RelativeLayout
+
+    <TextView
+        android:id="@+id/star4"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-        <TextView
-            android:id="@+id/star4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="반려인 닉네임"
-            android:textStyle="bold"
-            android:textColor="#EF8989"
-            android:textSize="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginBottom="10dp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/star4"
-            android:layout_marginTop="20dp"
-            android:text="*"
-            android:textSize="20dp"
-            android:paddingLeft="10dp"
-            android:textColor="#F44336"/>
-
-    </RelativeLayout>
-
+        android:layout_height="wrap_content"
+        android:text="반려동물 닉네임"
+        android:textStyle="bold"
+        android:textColor="#EF8989"
+        android:textSize="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginBottom="10dp"/>
 
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -72,7 +57,7 @@
         >
 
         <EditText
-            android:id="@+id/nickname"
+            android:id="@+id/petnickname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
@@ -82,24 +67,24 @@
             android:padding="8dp" />
 
         <android.widget.Button
-            android:id="@+id/overlap2"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
-            android:layout_marginLeft="10dp"
             android:layout_marginRight="20dp"
-            android:layout_toRightOf="@+id/nickname"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/petnickname"
             android:background="@drawable/blue"
             android:text="중복검사"
-            android:textColor="@color/white"
             android:textSize="18dp"
-            android:textStyle="bold"></android.widget.Button>
+            android:textStyle="bold"
+            android:textColor="@color/white">
+        </android.widget.Button>
     </RelativeLayout>
 
     <TextView
         android:id="@+id/star5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="반려인 생일"
+        android:text="반려동물 생일"
         android:textStyle="bold"
         android:textColor="#EF8989"
         android:textSize="20dp"
@@ -112,15 +97,16 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         >
+
         <Spinner
             android:id="@+id/spinner_year"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginBottom="10dp"
             android:layout_weight="1"
             android:background="@drawable/box_border"
             android:padding="6dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginBottom="10dp"
             android:entries="@array/date_year"/>
 
         <Spinner
@@ -141,7 +127,7 @@
 
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="반려인 성별"
+        android:text="반려동물 성별"
         android:textStyle="bold"
         android:textColor="#EF8989"
         android:textSize="20dp"
@@ -157,37 +143,31 @@
         >
         <RadioButton
             android:layout_weight="1"
-            android:text="여"
-            android:id="@+id/woman"
+            android:text="암"
+            android:id="@+id/petwoman"
             android:layout_marginLeft="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <RadioButton
             android:layout_weight="1"
-            android:text="남"
-            android:id="@+id/man"
+            android:text="수"
+            android:id="@+id/petman"
             android:layout_marginRight="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </RadioGroup>
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/bar3"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"/>
-
     <android.widget.Button
-        android:id="@+id/nextbtn2"
+        android:id="@+id/addBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="NEXT"
-        android:layout_gravity="center"
-        android:background="@drawable/blue"
         android:textColor="@color/white"
+        android:text="NEXT"
         android:textSize="18dp"
+        android:layout_gravity="center"
         android:textStyle="bold"
-        />
+        android:background="@drawable/blue"
+        android:layout_marginTop="60dp"
+        ></android.widget.Button>
 
 </LinearLayout>

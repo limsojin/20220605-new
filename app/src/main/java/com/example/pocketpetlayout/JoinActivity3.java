@@ -13,11 +13,13 @@ import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -33,6 +35,7 @@ import android.widget.Toast;
 import java.io.InputStream;
 
 public class JoinActivity3 extends AppCompatActivity {
+    private static final String TAG = ".JoinActivity3";
 
     String nickSt;
     String gender;
@@ -53,7 +56,8 @@ public class JoinActivity3 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_join3);
         MyDbHelper myDbHelper = new MyDbHelper(getApplicationContext());
-        database = myDbHelper.getWritableDatabase();
+
+        Button overlap2 = (Button) findViewById(R.id.overlap2);
         Button nextbtn2 = (Button) findViewById(R.id.nextbtn2); // 다음페이지로 넘기는 버튼
         EditText nickname = (EditText) findViewById(R.id.nickname); // 닉네임
         Spinner spinner_year = (Spinner)findViewById(R.id.spinner_year); // 월 선택
@@ -112,8 +116,7 @@ public class JoinActivity3 extends AppCompatActivity {
                 int checkedRadioButtonId = radioGroup.getCheckedRadioButtonId(); // 선택한 성별 넣음
                 if (checkedRadioButtonId == -1) {
                     // No item selected
-                }
-                else{
+                } else{
                     if (checkedRadioButtonId == R.id.woman) {
                         gender= "woman";
                     }else if(checkedRadioButtonId == R.id.man){
@@ -128,6 +131,27 @@ public class JoinActivity3 extends AppCompatActivity {
                 intent.putExtra("MEMBER_ID",emailSt); // 2에서 받은 걸 다시 보내고
                 intent.putExtra("PASSWORD", passwordSt2);
                 startActivity(intent);
+            }
+        });
+
+        overlap2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SQLiteDatabase db = myDbHelper.getReadableDatabase();
+                Cursor c =db.rawQuery("SELECT * FROM " + Member.TABLE_NAME, null);
+                if(c.moveToFirst()){
+                    do{
+                        String nickdb = c.getString(2);
+                        Log.i(TAG,"nick: " + nickdb);
+                        nickSt= nickname.getText().toString();
+
+                        if(nickdb.equals(nickSt)){
+                            Log.i(TAG, "nickSt: " + nickSt);
+                            Toast toast = Toast.makeText(JoinActivity3.this, "이미 존재하는 닉네임입니다.", Toast.LENGTH_SHORT);
+                            toast.show();
+                        }
+                    }while(c.moveToNext());
+                }
             }
         });
     }

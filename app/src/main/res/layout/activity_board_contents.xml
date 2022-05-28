@@ -47,16 +47,26 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
-            <ImageView
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/profile"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:src="@drawable/pro">
-            </ImageView>
+                android:layout_gravity="center"
+                android:src="@drawable/luv6"
+                app:civ_border_color="#000000"
+                app:civ_border_overlay="true"
+                app:civ_border_width="1dp"
+                app:layout_constraintStart_toStartOf="@id/guideline1"
+                app:layout_constraintTop_toTopOf="@id/guideline3"
+                tools:ignore="MissingConstraints"
+                />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/nickname"
                 android:text="닉 예시입니다"
+                android:textSize="18dp"
                 android:padding="10dp">
             </TextView>
             <View

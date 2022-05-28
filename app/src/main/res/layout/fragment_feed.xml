@@ -22,11 +22,13 @@
         </TextView>
 
         <EditText
+            android:id="@+id/search_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="13">
         </EditText>
         <android.widget.Button
+            android:id="@+id/search_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/blue"
@@ -37,6 +39,11 @@
         </android.widget.Button>
 
     </LinearLayout>
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </ImageView>
 
     <GridView
         android:id="@+id/gridview"

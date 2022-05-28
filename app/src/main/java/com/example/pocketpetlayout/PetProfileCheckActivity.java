@@ -10,9 +10,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 
-public class PetProfileCheck extends AppCompatActivity {
+public class PetProfileCheckActivity extends AppCompatActivity {
 
 
     //하단 버튼 없애기
@@ -56,7 +55,7 @@ public class PetProfileCheck extends AppCompatActivity {
                 finish();
                 return true;
             case R.id.toolbar_check: // 체크 버튼을 통해 반려동물 프로필로 이동
-                Intent intent = new Intent(getApplicationContext(), PetProfile.class);
+                Intent intent = new Intent(getApplicationContext(), PetProfileActivity.class);
                 startActivity(intent);
                 return true;
         }

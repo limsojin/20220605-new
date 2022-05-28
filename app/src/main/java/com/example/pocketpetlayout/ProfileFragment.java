@@ -17,8 +17,11 @@ import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.bumptech.glide.Glide;
 
 public class ProfileFragment extends Fragment {
 
@@ -27,6 +30,9 @@ public class ProfileFragment extends Fragment {
     Button ProfileFixBtn;
     Button CheckPetBtn;
     TextView text1;
+    ImageView imageView;
+    Intent intent;
+    String imagePath;
 
     //하단 버튼 없애기
     private View decorView;
@@ -68,6 +74,13 @@ public class ProfileFragment extends Fragment {
         CheckPetBtn = view.findViewById(R.id.profileButton2);
         CheckPetBtn.setOnClickListener(this::onClick);
 
+        imageView = view.findViewById(R.id.profileImageView1);
+        imagePath = getActivity().getIntent().getStringExtra("path");
+        if (imagePath != null) { // 이미지 경로가 있을 경우
+            Glide.with(this).load(imagePath).into(imageView);
+        }
+
+
         /*
          * 그리드뷰에 이미지 띄우기
          */
@@ -93,11 +106,11 @@ public class ProfileFragment extends Fragment {
     public void onClick(View view){
         switch (view.getId()){
             case R.id.profileButton1:
-                Intent intent = new Intent(getActivity().getApplicationContext(), ProfileFix.class);
+                Intent intent = new Intent(getActivity().getApplicationContext(), ProfileFixActivity.class);
                 startActivity(intent);
                 break;
             case R.id.profileButton2:
-                Intent intent2 = new Intent(getActivity().getApplicationContext(), PetProfileCheck.class);
+                Intent intent2 = new Intent(getActivity().getApplicationContext(), PetProfileCheckActivity.class);
                 startActivity(intent2);
                 break;
         }

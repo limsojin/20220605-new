@@ -13,14 +13,18 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
-public class PetProfile extends AppCompatActivity {
+import com.bumptech.glide.Glide;
+
+public class PetProfileActivity extends AppCompatActivity {
 
     private static final String TAG = "PetProfile" ;
     TextView text1;
     TextView text2;
     TextView text3;
+    ImageView imageView;
 
     //하단 버튼 없애기
     private View decorView;
@@ -53,7 +57,7 @@ public class PetProfile extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view){
-                Intent intent = new Intent(getApplicationContext(), PetProfileFix.class);
+                Intent intent = new Intent(getApplicationContext(), PetProfileFixActivity.class);
                 startActivity(intent);
             }
         });
@@ -63,7 +67,7 @@ public class PetProfile extends AppCompatActivity {
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view){
-                Intent intent = new Intent(getApplicationContext(), PetProfileCheck.class);
+                Intent intent = new Intent(getApplicationContext(), PetProfileCheckActivity.class);
                 startActivity(intent);
             }
         });
@@ -74,6 +78,13 @@ public class PetProfile extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayShowTitleEnabled(false);
+
+        imageView = findViewById(R.id.PetProfileImageView1);
+        String imagePath = getIntent().getStringExtra("path");
+        if (imagePath != null) { // 이미지 경로가 있을 경우
+            Glide.with(this).load(imagePath).into(imageView);
+        }
+
     }
 
     @Override

@@ -4,6 +4,10 @@
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false"/>
 
     <application
         android:allowBackup="true"
@@ -12,20 +16,32 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PocketPetLayout">
+        <provider
+            android:authorities="com.example.pocketpetlayout"
+            android:name="androidx.core.content.FileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/external"/>
+        </provider>
+        <activity
+            android:name=".AddPetActivity"
+            android:exported="false" />
         <activity
             android:name=".BoardUpdateActivity"
             android:exported="false" />
         <activity
-            android:name=".ProfileFix"
+            android:name=".ProfileFixActivity"
             android:exported="false" />
         <activity
-            android:name=".PetProfileFix"
+            android:name=".PetProfileFixActivity"
             android:exported="false" />
         <activity
-            android:name=".PetProfileCheck"
+            android:name=".PetProfileCheckActivity"
             android:exported="false" />
         <activity
-            android:name=".PetProfile"
+            android:name=".PetProfileActivity"
             android:exported="false" />
         <activity
             android:name=".FeedWriteActivity"

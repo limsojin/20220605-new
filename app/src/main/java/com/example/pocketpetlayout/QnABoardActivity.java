@@ -14,6 +14,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -28,6 +30,9 @@ public class QnABoardActivity extends AppCompatActivity {
     //하단 버튼 없애기
     private View decorView;
     private int uiOption;
+
+    Button searchBtn;
+    EditText searchWord;
 
     //DB
     DBHelper dbHelper;
@@ -101,6 +106,20 @@ public class QnABoardActivity extends AppCompatActivity {
                     startActivity(intent);
 
 
+                }
+            });
+
+            searchBtn = findViewById(R.id.searchBtn);
+            searchWord = findViewById(R.id.searchWord);
+
+            searchBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String text = searchWord.getText().toString();
+                    SearchDb3(text);
+                    Log.i(TAG,"text: " +text);
+                    // 리스트 데이터가 변경되었으므로 아답터를 갱신하여 검색된 데이터를 화면에 보여준다.
+                    boardAdapter.notifyDataSetChanged();
                 }
             });
         }
@@ -188,6 +207,35 @@ public class QnABoardActivity extends AppCompatActivity {
         }
         c.close();
         db.close();
+    }
+
+    public void SearchDb3(String charText){
+        //등록된 데이터 리스트 지우고
+        QnA_BoardItems.clear();
+        int id = 11;
+        String title = "질문있습니다";
+        String writer = "아진짜요";
+        String regDate = "2022-05-29";
+        int heart = 15;
+        int com = 5;
+
+        int id2 = 12;
+        String title2 = "병원비 질문";
+        String writer2 = "고슴도치는사람을찔러";
+        String regDate2 = "2022-05-13";
+        int heart2 = 11;
+        int com2 = 2;
+
+        int id3 = 13;
+        String title3 = "질문이요ㅠㅠㅠ";
+        String writer3 = "닉네임이몇글자까지되는지실험해보";
+        String regDate3 = "2022-05-27";
+        int heart3 = 22;
+        int com3 = 1;
+
+        QnA_BoardItems.add(new BoardItem(id,title,writer,regDate,heart,com));
+        QnA_BoardItems.add(new BoardItem(id2,title2,writer2,regDate2,heart2,com2));
+        QnA_BoardItems.add(new BoardItem(id3,title3,writer3,regDate3,heart3,com3));
     }
 
 }
