@@ -5,6 +5,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +20,7 @@ import java.util.ArrayList;
 
 public class QnAAdapter extends RecyclerView.Adapter<QnAAdapter.ViewHolder> {
 
+    final static String TAG = "QnAAdapter";
     Context context;
 
     @Override
@@ -64,20 +66,31 @@ public class QnAAdapter extends RecyclerView.Adapter<QnAAdapter.ViewHolder> {
     // position에 해당하는 데이터를 뷰홀더의 아이템뷰에 표시
     @Override
     public void onBindViewHolder(@NonNull QnAAdapter.ViewHolder holder, int position) {
-        QnAItem item = mQnAList.get(position);
 
-        String path = context.getCacheDir() + "/" +item.getImgName();
-        Bitmap bitmap = BitmapFactory.decodeFile(path);
-        Bitmap bmp = Bitmap.createScaledBitmap(bitmap, 500, 500, false);
+        if(!mQnAList.isEmpty()) {
+            QnAItem item = mQnAList.get(position);
 
-        holder.qna_image.setImageBitmap(bmp); // raw 폴더에 저장된 이미지 띄우기
-        holder.txt_main.setText(item.getMainText());
+            String path = context.getCacheDir() + "/" + item.getImgName();
+            Bitmap bitmap = BitmapFactory.decodeFile(path);
+            Bitmap bmp = Bitmap.createScaledBitmap(bitmap, 500, 500, false);
+
+            holder.qna_image.setImageBitmap(bmp); // raw 폴더에 저장된 이미지 띄우기
+            holder.txt_main.setText(item.getMainText());
+        }
+        else{
+            Log.i(TAG, " QNA 리스트 비어있음");
+        }
     }
 
     @Override
     public int getItemCount() {
-        return mQnAList.size();
-    } //아이템 사이즈도 지정하기
+        if(mQnAList.size() >= 5) {
+            return 5;
+        }
+        else{
+            return mQnAList.size();
+        }
+    } //아이템 사이즈도 지정하기 최근 글 5개만 보여줌
 
 }
 

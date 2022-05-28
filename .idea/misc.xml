@@ -15,15 +15,22 @@
         <entry key="..\:/AndroidStudioProjects/PocketPetLayout/PocketPetLayout/app/src/main/res/drawable/ic_baseline_favorite_24.xml" value="0.1" />
         <entry key="..\:/AndroidStudioProjects/PocketPetLayout/PocketPetLayout/app/src/main/res/drawable/ic_baseline_how_to_reg_24.xml" value="0.1" />
         <entry key="..\:/AndroidStudioProjects/PocketPetLayout/PocketPetLayout/app/src/main/res/drawable/ic_baseline_https_24.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioProjects/PocketPetLayout/PocketPetLayout/app/src/main/res/drawable/ic_baseline_mode_comment_24.xml" value="0.2055" />
         <entry key="..\:/AndroidStudioProjects/PocketPetLayout/PocketPetLayout/app/src/main/res/drawable/ic_baseline_question_answer_24.xml" value="0.1" />
         <entry key="..\:/AndroidStudioProjects/PocketPetLayout/PocketPetLayout/app/src/main/res/drawable/ic_baseline_swap_vert_24.xml" value="0.1" />
         <entry key="..\:/AndroidStudioProjects/PocketPetLayout/PocketPetLayout/app/src/main/res/drawable/ic_baseline_thumb_up_24.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioProjects/PocketPetLayout/PocketPetLayout/app/src/main/res/drawable/ic_baseline_tv_24.xml" value="0.2055" />
+        <entry key="..\:/AndroidStudioProjects/PocketPetLayout/PocketPetLayout/app/src/main/res/drawable/ic_calendar.xml" value="0.2055" />
+        <entry key="..\:/AndroidStudioProjects/PocketPetLayout/PocketPetLayout/app/src/main/res/drawable/ic_check.xml" value="0.2055" />
         <entry key="..\:/AndroidStudioProjects/PocketPetLayout/PocketPetLayout/app/src/main/res/drawable/list_background.xml" value="0.2845" />
         <entry key="..\:/AndroidStudioProjects/PocketPetLayout/PocketPetLayout/app/src/main/res/drawable/menu_selector_color.xml" value="0.2845" />
         <entry key="..\:/AndroidStudioProjects/PocketPetLayout/PocketPetLayout/app/src/main/res/drawable/profile_background.xml" value="0.2845" />
+        <entry key="..\:/AndroidStudioProjects/PocketPetLayout/PocketPetLayout/app/src/main/res/layout/activity_add_pet.xml" value="0.13451086956521738" />
         <entry key="..\:/AndroidStudioProjects/PocketPetLayout/PocketPetLayout/app/src/main/res/layout/activity_adopt_board.xml" value="0.1773049645390071" />
         <entry key="..\:/AndroidStudioProjects/PocketPetLayout/PocketPetLayout/app/src/main/res/layout/activity_best_board.xml" value="0.1773049645390071" />
-        <entry key="..\:/AndroidStudioProjects/PocketPetLayout/PocketPetLayout/app/src/main/res/layout/activity_board_contents.xml" value="0.33" />
+        <entry key="..\:/AndroidStudioProjects/PocketPetLayout/PocketPetLayout/app/src/main/res/layout/activity_board.xml" value="0.11347517730496454" />
+        <entry key="..\:/AndroidStudioProjects/PocketPetLayout/PocketPetLayout/app/src/main/res/layout/activity_board_contents.xml" value="0.22" />
+        <entry key="..\:/AndroidStudioProjects/PocketPetLayout/PocketPetLayout/app/src/main/res/layout/activity_board_update.xml" value="0.38645833333333335" />
         <entry key="..\:/AndroidStudioProjects/PocketPetLayout/PocketPetLayout/app/src/main/res/layout/activity_bookmark.xml" value="0.1773049645390071" />
         <entry key="..\:/AndroidStudioProjects/PocketPetLayout/PocketPetLayout/app/src/main/res/layout/activity_comm_list_item.xml" value="0.25" />
         <entry key="..\:/AndroidStudioProjects/PocketPetLayout/PocketPetLayout/app/src/main/res/layout/activity_customer.xml" value="0.1773049645390071" />
@@ -32,7 +39,9 @@
         <entry key="..\:/AndroidStudioProjects/PocketPetLayout/PocketPetLayout/app/src/main/res/layout/activity_feed_write.xml" value="0.13405797101449277" />
         <entry key="..\:/AndroidStudioProjects/PocketPetLayout/PocketPetLayout/app/src/main/res/layout/activity_free_board.xml" value="0.3129528985507246" />
         <entry key="..\:/AndroidStudioProjects/PocketPetLayout/PocketPetLayout/app/src/main/res/layout/activity_home.xml" value="0.15579710144927536" />
+        <entry key="..\:/AndroidStudioProjects/PocketPetLayout/PocketPetLayout/app/src/main/res/layout/activity_join2.xml" value="0.1802536231884058" />
         <entry key="..\:/AndroidStudioProjects/PocketPetLayout/PocketPetLayout/app/src/main/res/layout/activity_join3.xml" value="0.1773049645390071" />
+        <entry key="..\:/AndroidStudioProjects/PocketPetLayout/PocketPetLayout/app/src/main/res/layout/activity_join4.xml" value="0.23333333333333334" />
         <entry key="..\:/AndroidStudioProjects/PocketPetLayout/PocketPetLayout/app/src/main/res/layout/activity_list_item.xml" value="0.25" />
         <entry key="..\:/AndroidStudioProjects/PocketPetLayout/PocketPetLayout/app/src/main/res/layout/activity_main.xml" value="0.2864583333333333" />
         <entry key="..\:/AndroidStudioProjects/PocketPetLayout/PocketPetLayout/app/src/main/res/layout/activity_main5.xml" value="0.1773049645390071" />
@@ -40,14 +49,26 @@
         <entry key="..\:/AndroidStudioProjects/PocketPetLayout/PocketPetLayout/app/src/main/res/layout/activity_main7.xml" value="0.1773049645390071" />
         <entry key="..\:/AndroidStudioProjects/PocketPetLayout/PocketPetLayout/app/src/main/res/layout/activity_main8.xml" value="0.1773049645390071" />
         <entry key="..\:/AndroidStudioProjects/PocketPetLayout/PocketPetLayout/app/src/main/res/layout/activity_main9.xml" value="0.1773049645390071" />
+        <entry key="..\:/AndroidStudioProjects/PocketPetLayout/PocketPetLayout/app/src/main/res/layout/activity_my_board.xml" value="0.15881458966565348" />
+        <entry key="..\:/AndroidStudioProjects/PocketPetLayout/PocketPetLayout/app/src/main/res/layout/activity_pet_profile.xml" value="0.2328125" />
+        <entry key="..\:/AndroidStudioProjects/PocketPetLayout/PocketPetLayout/app/src/main/res/layout/activity_pet_profile2.xml" value="0.3229166666666667" />
+        <entry key="..\:/AndroidStudioProjects/PocketPetLayout/PocketPetLayout/app/src/main/res/layout/activity_pet_profile_add.xml" value="0.3828125" />
+        <entry key="..\:/AndroidStudioProjects/PocketPetLayout/PocketPetLayout/app/src/main/res/layout/activity_pet_profile_check.xml" value="0.2598958333333333" />
+        <entry key="..\:/AndroidStudioProjects/PocketPetLayout/PocketPetLayout/app/src/main/res/layout/activity_pet_profile_fix.xml" value="0.24739583333333334" />
+        <entry key="..\:/AndroidStudioProjects/PocketPetLayout/PocketPetLayout/app/src/main/res/layout/activity_profile_fix.xml" value="0.5" />
         <entry key="..\:/AndroidStudioProjects/PocketPetLayout/PocketPetLayout/app/src/main/res/layout/activity_qna_board.xml" value="0.2" />
         <entry key="..\:/AndroidStudioProjects/PocketPetLayout/PocketPetLayout/app/src/main/res/layout/activity_question_item.xml" value="0.33" />
         <entry key="..\:/AndroidStudioProjects/PocketPetLayout/PocketPetLayout/app/src/main/res/layout/activity_write.xml" value="0.2" />
-        <entry key="..\:/AndroidStudioProjects/PocketPetLayout/PocketPetLayout/app/src/main/res/layout/fragment_board.xml" value="0.13405797101449277" />
+        <entry key="..\:/AndroidStudioProjects/PocketPetLayout/PocketPetLayout/app/src/main/res/layout/fragment_board.xml" value="0.33" />
         <entry key="..\:/AndroidStudioProjects/PocketPetLayout/PocketPetLayout/app/src/main/res/layout/fragment_bookmark.xml" value="0.1773049645390071" />
+        <entry key="..\:/AndroidStudioProjects/PocketPetLayout/PocketPetLayout/app/src/main/res/layout/fragment_cam.xml" value="0.33" />
         <entry key="..\:/AndroidStudioProjects/PocketPetLayout/PocketPetLayout/app/src/main/res/layout/fragment_feed.xml" value="0.1773049645390071" />
-        <entry key="..\:/AndroidStudioProjects/PocketPetLayout/PocketPetLayout/app/src/main/res/layout/fragment_home.xml" value="0.18432971014492755" />
+        <entry key="..\:/AndroidStudioProjects/PocketPetLayout/PocketPetLayout/app/src/main/res/layout/fragment_home.xml" value="0.25" />
+        <entry key="..\:/AndroidStudioProjects/PocketPetLayout/PocketPetLayout/app/src/main/res/layout/fragment_profile.xml" value="0.23958333333333334" />
         <entry key="..\:/AndroidStudioProjects/PocketPetLayout/PocketPetLayout/app/src/main/res/layout/main_activity.xml" value="0.1773049645390071" />
+        <entry key="..\:/AndroidStudioProjects/PocketPetLayout/PocketPetLayout/app/src/main/res/menu/joinprofile_menu.xml" value="0.1671875" />
+        <entry key="..\:/AndroidStudioProjects/PocketPetLayout/PocketPetLayout/app/src/main/res/menu/profile_menu.xml" value="0.23958333333333334" />
+        <entry key="..\:/AndroidStudioProjects/PocketPetLayout/PocketPetLayout/app/src/main/res/menu/toolbar_checkmenu.xml" value="0.23177083333333334" />
         <entry key="..\:/AndroidStudioProjects/PocketPetLayout/PocketPetLayout/app/src/main/res/menu/toolbar_freeboardmenu.xml" value="0.1" />
         <entry key="..\:/AndroidStudioProjects/PocketPetLayout/PocketPetLayout/app/src/main/res/menu/toolbar_menu.xml" value="0.1" />
         <entry key="..\:/Users/82102/AndroidStudioProjects/poketpet0515/app/src/main/res/layout/activity_board.xml" value="0.175" />

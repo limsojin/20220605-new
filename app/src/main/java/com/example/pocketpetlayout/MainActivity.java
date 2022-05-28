@@ -7,6 +7,7 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.nfc.Tag;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -15,6 +16,10 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
+
+    //하단 버튼 없애기
+    private View decorView;
+    private int	uiOption;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +34,17 @@ public class MainActivity extends AppCompatActivity {
         Button login1 = (Button) findViewById(R.id.login1);
 
 
+        //하단 버튼을 없애는 기능
+        decorView = getWindow().getDecorView();
+        uiOption = getWindow().getDecorView().getSystemUiVisibility();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH)
+            uiOption |= View.SYSTEM_UI_FLAG_HIDE_NAVIGATION;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+            uiOption |= View.SYSTEM_UI_FLAG_FULLSCREEN;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT)
+            uiOption |= View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY;
+        decorView.setSystemUiVisibility(uiOption);
+        //---------------------
 
         login1.setOnClickListener(new View.OnClickListener() { //로그인 버튼을 누르면 메인페이지로 이동
             @Override

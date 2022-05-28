@@ -79,20 +79,22 @@
         android:textColor="@color/white"
         android:textSize="18dp"
         android:textStyle="bold"
-        android:stateListAnimator="@null"
-        android:minHeight="0dp"
-        android:minWidth="0dp"
         android:background="@drawable/search_button_background"
-        app:layout_constraintTop_toBottomOf="@id/guideline1"
+        android:minWidth="0dp"
+        android:minHeight="0dp"
+        android:stateListAnimator="@null"
+        app:layout_constraintHorizontal_bias="0.434"
         app:layout_constraintLeft_toRightOf="@id/searchWord"
         app:layout_constraintRight_toLeftOf="@id/guideline3"
-        />
+        app:layout_constraintTop_toBottomOf="@id/guideline1" />
 
     <!-- 리스트뷰 -->
     <ListView
         android:id="@+id/freeListView"
         android:layout_width="360dp"
         android:layout_height="600dp"
+        android:scrollbars="none"
+        android:layout_marginTop="20dp"
         app:layout_constraintLeft_toRightOf="@id/guideline2"
         app:layout_constraintTop_toBottomOf="@id/searchWord" />
 

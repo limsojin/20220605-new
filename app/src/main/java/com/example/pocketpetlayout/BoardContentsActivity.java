@@ -1,5 +1,6 @@
 package com.example.pocketpetlayout;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -11,6 +12,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -37,6 +39,7 @@ public class BoardContentsActivity extends AppCompatActivity {
 
     int boardId;
     String imgName;
+    String writer;
     ImageView imgView;
     TextView titleView;
     TextView nickname;
@@ -44,17 +47,26 @@ public class BoardContentsActivity extends AppCompatActivity {
     TextView contentView;
     TextView heartView;
     TextView commView;
+    TextView heartBtn;
 
     EditText comentText;
     Button sendComm;
+    Button delBoard;
+    Button upBoard;
+
+    //하단 버튼 없애기
+    private View decorView;
+    private int	uiOption;
+
+    int comm_cnt;
+    int heart;
 
     ArrayList<CommentItem> commentItems;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void onResume() {
         setContentView(R.layout.activity_board_contents);
-
+        super.onResume();
         setSupportActionBar(toolbar);
 
         //툴바만들기
@@ -84,7 +96,47 @@ public class BoardContentsActivity extends AppCompatActivity {
         commView = findViewById(R.id.comment);
         comentText = findViewById(R.id.commentText);
         sendComm = findViewById(R.id.sendComment);
+        heartBtn = findViewById(R.id.heartBtn);
+        delBoard = findViewById(R.id.delBtn);
+        upBoard = findViewById(R.id.upBtn);
 
+        //하단 버튼을 없애는 기능
+        decorView = getWindow().getDecorView();
+        uiOption = getWindow().getDecorView().getSystemUiVisibility();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH)
+            uiOption |= View.SYSTEM_UI_FLAG_HIDE_NAVIGATION;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+            uiOption |= View.SYSTEM_UI_FLAG_FULLSCREEN;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT)
+            uiOption |= View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY;
+        decorView.setSystemUiVisibility(uiOption);
+        //---------------------
+
+        //하트(좋아요) 버튼
+        heartBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                boolean oK = dbHelper.updateBoardHeart(boardId, heart);
+
+                if(oK) {
+                    Log.i(TAG, "하트 수 업데이트 완료");
+                }
+                else{
+                    Log.i(TAG, "하트 수 업데이트 실패");
+                }
+
+                //현재 화면 새로고침
+                finish();//인텐트 종료
+                overridePendingTransition(0, 0);//인텐트 효과 없애기
+                Intent intent = getIntent(); //인텐트
+                startActivity(intent); //액티비티 열기
+                overridePendingTransition(0, 0);//인텐트 효과 없애기
+            }
+        });
+        //------------------------------
+
+        //댓글 작성
         sendComm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -114,9 +166,63 @@ public class BoardContentsActivity extends AppCompatActivity {
                     long newRowId = db.insert(Comment.TABLE_NAME, null, comm);
                     Log.i(TAG, "new row id: " + newRowId);
 
+                    boolean oK = dbHelper.updateBoardComment(boardId, comm_cnt);
+
+                    if(oK){
+                        Log.i(TAG, " 댓글 수 업데이트 성공;");
+                    }
+                    else{
+                        Log.i(TAG, " 댓글 수 업데이트 실패");
+                    }
+
+                    //현재 화면 새로고침
+                    finish();//인텐트 종료
+                    overridePendingTransition(0, 0);//인텐트 효과 없애기
+                    Intent intent = getIntent(); //인텐트
+                    startActivity(intent); //액티비티 열기
+                    overridePendingTransition(0, 0);//인텐트 효과 없애기
+
                 }
             }
         });
+        //----------------------
+
+        // 글 삭제 버튼
+        delBoard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                     boolean Ok =  dbHelper.deleteBoardToPK(boardId);
+
+                     if(Ok){
+                         Log.i(TAG, " 삭제 완료 ");
+                         finish();
+                     }
+                     else{
+                         Log.i(TAG, "삭제 실패");
+                     }
+
+            }
+        });
+        //-------------------
+
+        //글 수정 버튼
+        upBoard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                String titleStr = titleView.getText().toString();
+                String contentStr = contentView.getText().toString();
+
+                Intent intent = new Intent(getApplicationContext(),BoardUpdateActivity.class);
+                intent.putExtra("boardId", boardId);
+                intent.putExtra("title", titleStr);
+                intent.putExtra("content", contentStr);
+                startActivity(intent);
+
+            }
+        });
+        //-------------------
 
 
         //게시글 내용 가져옴
@@ -174,21 +280,21 @@ public class BoardContentsActivity extends AppCompatActivity {
         if(c.moveToFirst()){
             do{
                 String title = c.getString(1);
-                String writer = c.getString(2);
+                writer = c.getString(2);
                 imgName = c.getString(3);
                 String contents = c.getString(4);
-                int comm = c.getInt(5);
-                int like = c.getInt(6);
+                comm_cnt = c.getInt(5);
+                heart = c.getInt(6);
                 String reg_date = c.getString(8);
 
-                Log.i(TAG, "READ title :" + title + "writer :" + writer + "writer :" + writer + "imgName" + imgName + "contents: " + contents + "com : " + comm
-                + "like : " + like + " reg_date: " + reg_date );
+                Log.i(TAG, "READ title :" + title + "writer :" + writer + "writer :" + writer + "imgName" + imgName + "contents: " + contents + "com : " + comm_cnt
+                + "like : " + heart + " reg_date: " + reg_date );
 
                 titleView.setText(title);
                 nickname.setText(writer);
                 contentView.setText(contents);
-                commView.setText(String.valueOf(comm));
-                heartView.setText(String.valueOf(like));
+                commView.setText(String.valueOf(comm_cnt));
+                heartView.setText(String.valueOf(heart));
                 reg_dateView.setText(reg_date);
 
                 String path = getCacheDir() + "/" + imgName;

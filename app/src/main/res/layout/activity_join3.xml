@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -30,8 +29,9 @@
     </androidx.appcompat.widget.Toolbar>
 
     <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:id="@+id/pro"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:src="@drawable/pro"
         android:layout_gravity="center"
         >
@@ -81,18 +81,18 @@
             android:ems="13"
             android:padding="8dp" />
 
-        <Button
+        <android.widget.Button
+            android:id="@+id/overlap2"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
-            android:layout_marginRight="20dp"
             android:layout_marginLeft="10dp"
+            android:layout_marginRight="20dp"
             android:layout_toRightOf="@+id/nickname"
             android:background="@drawable/blue"
             android:text="중복검사"
+            android:textColor="@color/white"
             android:textSize="18dp"
-            android:textStyle="bold"
-            android:textColor="@color/white">
-        </Button>
+            android:textStyle="bold"></android.widget.Button>
     </RelativeLayout>
 
     <TextView
@@ -107,35 +107,35 @@
         android:layout_marginLeft="20dp"
         android:layout_marginBottom="10dp"/>
 
-  <LinearLayout
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:orientation="horizontal"
-    >
-      <Spinner
-          android:id="@+id/spinner_year"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_weight="1"
-          android:background="@drawable/box_border"
-          android:padding="6dp"
-          android:layout_marginLeft="20dp"
-          android:layout_marginBottom="10dp"
-          android:entries="@array/date_year"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+        <Spinner
+            android:id="@+id/spinner_year"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/box_border"
+            android:padding="6dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginBottom="10dp"
+            android:entries="@array/date_year"/>
 
-      <Spinner
-          android:id="@+id/spinner_month"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_toRightOf="@id/spinner_year"
-          android:background="@drawable/box_border"
-          android:layout_weight="1"
-          android:padding="6dp"
-          android:layout_marginRight="20dp"
-          android:layout_marginBottom="10dp"
-          android:entries="@array/date_month"/>
+        <Spinner
+            android:id="@+id/spinner_month"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/spinner_year"
+            android:background="@drawable/box_border"
+            android:layout_weight="1"
+            android:padding="6dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="10dp"
+            android:entries="@array/date_month"/>
 
-  </LinearLayout>
+    </LinearLayout>
 
     <TextView
 
@@ -149,27 +149,27 @@
         android:layout_marginLeft="20dp"
         android:layout_marginBottom="10dp"/>
 
-        <RadioGroup
-            android:id="@+id/radioGroup"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            >
-            <RadioButton
-                android:layout_weight="1"
-                android:text="여"
-                android:id="@+id/woman"
-                android:layout_marginLeft="20dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-            <RadioButton
-                android:layout_weight="1"
-                android:text="남"
-                android:id="@+id/man"
-                android:layout_marginRight="20dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </RadioGroup>
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        <RadioButton
+            android:layout_weight="1"
+            android:text="여"
+            android:id="@+id/woman"
+            android:layout_marginLeft="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <RadioButton
+            android:layout_weight="1"
+            android:text="남"
+            android:id="@+id/man"
+            android:layout_marginRight="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RadioGroup>
 
     <ImageView
         android:layout_width="wrap_content"
@@ -178,13 +178,16 @@
         android:paddingLeft="10dp"
         android:paddingRight="10dp"/>
 
-    <Button
+    <android.widget.Button
         android:id="@+id/nextbtn2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="NEXT"
-        android:textSize="18dp"
         android:layout_gravity="center"
+        android:background="@drawable/blue"
+        android:textColor="@color/white"
+        android:textSize="18dp"
+        android:textStyle="bold"
         />
 
 </LinearLayout>

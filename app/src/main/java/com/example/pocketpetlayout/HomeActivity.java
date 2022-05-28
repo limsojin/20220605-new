@@ -28,7 +28,7 @@ public class HomeActivity<ResultProfileBinding> extends AppCompatActivity {
     private BoardFragment boardFragment;
     private FeedFragment feedFragment;
     private CamFragment camFragment;
-    //private ProfileFragment profileFragment;
+    private ProfileFragment profileFragment;
 
 
     @Override
@@ -41,7 +41,7 @@ public class HomeActivity<ResultProfileBinding> extends AppCompatActivity {
         boardFragment = new BoardFragment();
         feedFragment = new FeedFragment();
         camFragment = new CamFragment();
-        //profileFragment = new ProfileFragment();
+        profileFragment = new ProfileFragment();
 
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.fragment_frame, homeFragment).commitAllowingStateLoss();
@@ -82,19 +82,15 @@ public class HomeActivity<ResultProfileBinding> extends AppCompatActivity {
                                 Log.d(TAG, "onNavigationItemSelected: profile button clicked");
                                 fragmentManager.beginTransaction().replace(R.id.fragment_frame, camFragment).commit();
                                 return true;
-                           /*
                             case R.id.item_profile:
                                 Log.d(TAG, "onNavigationItemSelected: profile button clicked");
                                 fragmentManager.beginTransaction().replace(R.id.fragment_frame, profileFragment).commit();
-                                return true;*/
+                                return true;
                             default:
                                 return false;
                         }
                     }
                 }
         );
-
-
     }
-
 }

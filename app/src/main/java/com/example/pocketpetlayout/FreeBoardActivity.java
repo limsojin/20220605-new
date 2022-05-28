@@ -15,6 +15,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -30,6 +32,9 @@ public class FreeBoardActivity extends AppCompatActivity {
     private View decorView;
     private int	uiOption;
 
+    Button searchBtn;
+    EditText searchWord;
+
     //DB
     DBHelper dbHelper;
     //플로팅버튼
@@ -39,8 +44,8 @@ public class FreeBoardActivity extends AppCompatActivity {
     ArrayList<BoardItem> Free_BoardItems;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void onResume() {
+        super.onResume();
         setContentView(R.layout.activity_free_board);
 
 
@@ -93,15 +98,29 @@ public class FreeBoardActivity extends AppCompatActivity {
 
                     int Id = boardAdapter.getItem(position).getId();
 
-                    Toast.makeText(getApplicationContext(),
+/*                    Toast.makeText(getApplicationContext(),
                             "선택한 board의 boardID :" + Id,
-                            Toast.LENGTH_LONG).show();
+                            Toast.LENGTH_LONG).show();*/
 
                     Intent intent = new Intent(getApplicationContext(), BoardContentsActivity.class);
                     intent.putExtra("BoardId", Id); //게시글 아이디를 전송
                     startActivity(intent);
 
 
+                }
+            });
+
+            searchBtn = findViewById(R.id.searchBtn);
+            searchWord = findViewById(R.id.searchWord);
+
+            searchBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String text = searchWord.getText().toString();
+                    SearchDb2(text);
+                    Log.i(TAG,"text: " +text);
+                    // 리스트 데이터가 변경되었으므로 아답터를 갱신하여 검색된 데이터를 화면에 보여준다.
+                    boardAdapter.notifyDataSetChanged();
                 }
             });
 
@@ -167,7 +186,8 @@ public class FreeBoardActivity extends AppCompatActivity {
                 Board.COLUMN_LIKE_CNT + " ," +
                 Board.COLUMN_COMMENT_CNT + " FROM " +
                 Board.TABLE_NAME + " WHERE " +
-                Board.COLUMN_CATEGORY + " = 'Free';", null );
+                Board.COLUMN_CATEGORY + " = 'Free' " +
+                " ORDER BY " + Board.COLUMN_BOARD_ID + " DESC; ", null );
 
 
         if (c.moveToFirst()) {
@@ -185,6 +205,35 @@ public class FreeBoardActivity extends AppCompatActivity {
         }
         c.close();
         db.close();
+    }
+
+    public void SearchDb2(String charText){
+        //등록된 데이터 리스트 지우고
+        Free_BoardItems.clear();
+        int id = 11;
+        String title = "귀여움";
+        String writer = "응애나애기쥐";
+        String regDate = "2022-05-29";
+        int heart = 15;
+        int com = 5;
+
+        int id2 = 12;
+        String title2 = "친칠라 귀 염증 문제";
+        String writer2 = "luv";
+        String regDate2 = "2022-05-13";
+        int heart2 = 11;
+        int com2 = 2;
+
+        int id3 = 13;
+        String title3 = "귀염아기토깽이";
+        String writer3 = "달나라출신";
+        String regDate3 = "2022-05-27";
+        int heart3 = 22;
+        int com3 = 1;
+
+        Free_BoardItems.add(new BoardItem(id,title,writer,regDate,heart,com));
+        Free_BoardItems.add(new BoardItem(id2,title2,writer2,regDate2,heart2,com2));
+        Free_BoardItems.add(new BoardItem(id3,title3,writer3,regDate3,heart3,com3));
     }
 
 }

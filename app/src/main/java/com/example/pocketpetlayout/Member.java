@@ -14,7 +14,7 @@ public class Member {
                     Member.PASSWORD + " TEXT," +
                     Member.NICKNAME + " TEXT," +
                     Member.SEX + " TEXT," +
-                    Member.BIRTHDAY + " INTEGER)";
+                    Member.BIRTHDAY + " TEXT)";
 
     private static final String SQL_DELETE_MEMBER =
             "DROP TABLE IF EXISTS " + Member.TABLE_NAME;

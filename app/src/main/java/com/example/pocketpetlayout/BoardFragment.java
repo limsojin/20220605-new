@@ -39,6 +39,10 @@ public class BoardFragment<HomeFragmentBinding> extends Fragment {
     private TextView adoptBoard;
     private ArrayList<BoardItem> mItems;
 
+    //하단 버튼 없애기
+    private View decorView;
+    private int	uiOption;
+
     DBHelper dbHelper;
 
     @Override
@@ -68,6 +72,20 @@ public class BoardFragment<HomeFragmentBinding> extends Fragment {
 
         dbHelper = new DBHelper(getActivity().getApplicationContext());
 
+
+        //하단 버튼을 없애는 기능
+        decorView = getActivity().getWindow().getDecorView();
+        uiOption = getActivity().getWindow().getDecorView().getSystemUiVisibility();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH)
+            uiOption |= View.SYSTEM_UI_FLAG_HIDE_NAVIGATION;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+            uiOption |= View.SYSTEM_UI_FLAG_FULLSCREEN;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT)
+            uiOption |= View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY;
+        decorView.setSystemUiVisibility(uiOption);
+        //---------------------
+
+
         // 리스트 아이템
         firstInit(view);    // 객체 초기화 및 생성
 
@@ -89,8 +107,8 @@ public class BoardFragment<HomeFragmentBinding> extends Fragment {
 
                     int Id = boardAdapter.getItem(position).getId();
 
-                            Toast.makeText(getActivity().getApplicationContext(),
-                            "선택한 board의 boardID :" + Id, Toast.LENGTH_LONG).show();
+/*                            Toast.makeText(getActivity().getApplicationContext(),
+                            "선택한 board의 boardID :" + Id, Toast.LENGTH_LONG).show();*/
 
                     Intent intent = new Intent(getActivity().getApplicationContext(), BoardContentsActivity.class);
                     intent.putExtra("BoardId", Id); //게시글 아이디를 전송
@@ -133,6 +151,7 @@ public class BoardFragment<HomeFragmentBinding> extends Fragment {
         }
     }
 
+    // 최신글 보여주는 리스트 뷰
     public void firstInit(View v){
         mItems = new ArrayList<BoardItem>();
 
@@ -148,7 +167,7 @@ public class BoardFragment<HomeFragmentBinding> extends Fragment {
                 Board.COLUMN_REGISTER_DATE + " ," +
                 Board.COLUMN_LIKE_CNT + " ," +
                 Board.COLUMN_COMMENT_CNT + " FROM " +
-                Board.TABLE_NAME + ";", null);
+                Board.TABLE_NAME + " ORDER BY " + Board.COLUMN_BOARD_ID + " DESC;", null);
 
 
         if (c.moveToFirst()) {

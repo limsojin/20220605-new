@@ -14,6 +14,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -25,9 +27,13 @@ public class AdoptBoardActivity extends AppCompatActivity {
 
     public final static String TAG = "AdoptBoardActivity";
     private Toolbar toolbar;
+
     //하단 버튼 없애기
     private View decorView;
     private int uiOption;
+
+    Button searchBtn;
+    EditText searchWord;
 
     //DB
     DBHelper dbHelper;
@@ -37,11 +43,12 @@ public class AdoptBoardActivity extends AppCompatActivity {
     //게시글 리스트
     ArrayList<BoardItem> Adopt_BoardItems;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_adopt_board);
+    ArrayList<BoardItem> Copy_Adopt_BoardItems;
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        setContentView(R.layout.activity_adopt_board);
 
         setSupportActionBar(toolbar);
 
@@ -75,25 +82,29 @@ public class AdoptBoardActivity extends AppCompatActivity {
         InitializeQnABoardData();
 
         if(!Adopt_BoardItems.isEmpty()) {
+
+
             //Listview 지정
-            ListView qnaListView = this.findViewById(R.id.adoptListView);
+            ListView adoptListView = this.findViewById(R.id.adoptListView);
 
             // ListView Adpater 지정
             final BoardAdapter boardAdapter = new BoardAdapter(this, Adopt_BoardItems);
 
             // ListView의 어뎁터를 셋한다.
-            qnaListView.setAdapter(boardAdapter);
+            adoptListView.setAdapter(boardAdapter);
 
             //ListView 내부 아이템이 클릭 되었을 경우?
-            qnaListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            adoptListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
 
                     int Id = boardAdapter.getItem(position).getId();
 
+/*
                     Toast.makeText(getApplicationContext(),
                             "선택한 board의 boardID :" + Id,
                             Toast.LENGTH_LONG).show();
+*/
 
                     Intent intent = new Intent(getApplicationContext(), BoardContentsActivity.class);
                     intent.putExtra("BoardId", Id); //게시글 아이디를 전송
@@ -102,6 +113,25 @@ public class AdoptBoardActivity extends AppCompatActivity {
 
                 }
             });
+
+
+            Copy_Adopt_BoardItems = new ArrayList<BoardItem>();
+            Copy_Adopt_BoardItems.addAll(Adopt_BoardItems);
+
+            searchBtn = findViewById(R.id.searchBtn);
+            searchWord = findViewById(R.id.searchWord);
+
+            searchBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String text = searchWord.getText().toString();
+                    SearchDb(text);
+                    Log.i(TAG,"text: " +text);
+                    // 리스트 데이터가 변경되었으므로 아답터를 갱신하여 검색된 데이터를 화면에 보여준다.
+                    boardAdapter.notifyDataSetChanged();
+                }
+            });
+
         }
 
         // 플로팅 버튼
@@ -162,7 +192,8 @@ public class AdoptBoardActivity extends AppCompatActivity {
                 Board.COLUMN_LIKE_CNT + " ," +
                 Board.COLUMN_COMMENT_CNT + " FROM " +
                 Board.TABLE_NAME + " WHERE " +
-                Board.COLUMN_CATEGORY + " = 'Adopt';", null );
+                Board.COLUMN_CATEGORY + " = 'Adopt'" +
+                " ORDER BY " + Board.COLUMN_BOARD_ID + " DESC; ", null );
 
 
         if (c.moveToFirst()) {
@@ -181,4 +212,36 @@ public class AdoptBoardActivity extends AppCompatActivity {
         c.close();
         db.close();
     }
+
+
+    public void SearchDb(String charText){
+        //등록된 데이터 리스트 지우고
+        Adopt_BoardItems.clear();
+        int id = 11;
+        String title = "입양안내!!";
+        String writer = "피카츄";
+        String regDate = "2022-05-29";
+        int heart = 3;
+        int com = 5;
+
+        int id2 = 12;
+        String title2 = "햄스터 입양할 건데";
+        String writer2 = "로켓단";
+        String regDate2 = "2022-05-13";
+        int heart2 = 1;
+        int com2 = 2;
+
+        int id3 = 13;
+        String title3 = "입양 질문이요 ㅠㅠ";
+        String writer3 = "난냐옹이다옹";
+        String regDate3 = "2022-05-27";
+        int heart3 = 10;
+        int com3 = 2;
+
+        Adopt_BoardItems.add(new BoardItem(id,title,writer,regDate,heart,com));
+        Adopt_BoardItems.add(new BoardItem(id2,title2,writer2,regDate2,heart2,com2));
+        Adopt_BoardItems.add(new BoardItem(id3,title3,writer3,regDate3,heart3,com3));
+    }
+
+
 }
