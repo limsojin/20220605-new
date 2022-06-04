@@ -36,7 +36,7 @@ public class CamFragment extends Fragment implements View.OnClickListener{
 
     @Override
     public void onClick(View v) {
-        Intent bj=new Intent(Intent.ACTION_VIEW, Uri.parse("http://192.168.45.2:8080/greet.html"));
+        Intent bj=new Intent(Intent.ACTION_VIEW, Uri.parse("http://192.168.45.57:8080/greet.html"));
         startActivity(bj);
     }
 }

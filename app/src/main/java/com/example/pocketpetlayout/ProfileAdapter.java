@@ -16,30 +16,21 @@ public class ProfileAdapter extends BaseAdapter {
     private Context mContext;
     //출력될 이미지 데이터셋(res/drawable 폴더)
     private Integer[] mThumbIds = {
-            R.drawable.profile2,
-            R.drawable.profile3,
-            R.drawable.profile4,
-            R.drawable.profile5,
-            R.drawable.profile6,
-            R.drawable.profile7,
-            R.drawable.profile8,
-            R.drawable.profile10,
-            R.drawable.profile2, /*반복*/
-            R.drawable.profile3,
-            R.drawable.profile4,
-            R.drawable.profile5,
-            R.drawable.profile6,
-            R.drawable.profile7,
-            R.drawable.profile8,
-            R.drawable.profile10,
-            R.drawable.profile2, /*반복*/
-            R.drawable.profile3,
-            R.drawable.profile4,
-            R.drawable.profile5,
-            R.drawable.profile6,
-            R.drawable.profile7,
-            R.drawable.profile8,
-            R.drawable.profile10
+            R.drawable.pro01,
+            R.drawable.pro02,
+            R.drawable.pro03,
+            R.drawable.pro04,
+            R.drawable.pro05,
+            R.drawable.pro06,
+            R.drawable.pro07,
+            R.drawable.pro08,
+            R.drawable.pro09,
+            R.drawable.pro12,
+            R.drawable.pro11,
+            R.drawable.pro16,
+            R.drawable.pro13,
+            R.drawable.pro14,
+            R.drawable.pro15,
     };
 
     public ProfileAdapter(Context c,int displayWidth){

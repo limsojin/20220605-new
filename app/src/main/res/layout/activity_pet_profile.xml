@@ -63,7 +63,7 @@
         android:layout_height="70dp"
         android:layout_gravity="center"
         android:layout_marginTop="25dp"
-        android:src="@drawable/profile11"
+        android:src="@drawable/pro15"
         app:civ_border_color="#000000"
         app:civ_border_overlay="true"
         app:civ_border_width="1dp"
@@ -96,7 +96,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="생일: "
+        android:text="성별: "
         app:layout_constraintStart_toStartOf="@id/guideline2"
         app:layout_constraintTop_toBottomOf="@+id/PetProfileText1" />
 
@@ -106,7 +106,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"
-        android:text="2022.02.05"
+        android:text="남자"
         app:layout_constraintLeft_toRightOf="@+id/PetProfileText3"
         app:layout_constraintTop_toBottomOf="@+id/PetProfileText2" />
 
@@ -115,7 +115,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
-        android:text="성별: "
+        android:text="생일: "
         app:layout_constraintStart_toStartOf="@id/guideline2"
         app:layout_constraintTop_toBottomOf="@+id/PetProfileText1" />
 
@@ -125,7 +125,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"
-        android:text="남자"
+        android:text="2022.05.02"
         app:layout_constraintLeft_toRightOf="@+id/PetProfileText3"
         app:layout_constraintTop_toBottomOf="@+id/PetProfileText4" />
 

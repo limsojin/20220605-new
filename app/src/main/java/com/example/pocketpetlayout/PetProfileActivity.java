@@ -1,9 +1,5 @@
 package com.example.pocketpetlayout;
 
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -15,6 +11,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.bumptech.glide.Glide;
 
@@ -51,7 +51,18 @@ public class PetProfileActivity extends AppCompatActivity {
         //---------------------
 
         DBInfo();
-
+        Intent intent = getIntent();
+        String name = intent.getStringExtra("pname");
+        String gender = intent.getStringExtra("pgender");
+        String birthday = intent.getStringExtra("pbirthday");
+        text1 = findViewById(R.id.PetProfileText2);
+        text2 = findViewById(R.id.PetProfileText4);
+        text3 = findViewById(R.id.petProfileText6);
+        if(name != null) {
+            text1.setText(name);
+            text2.setText(gender);
+            text3.setText(birthday);
+        }
         // 반려동물 프로필 변경 페이지 이동 버튼 이벤트
         Button button = findViewById(R.id.PetProfileButton1);
         button.setOnClickListener(new View.OnClickListener() {

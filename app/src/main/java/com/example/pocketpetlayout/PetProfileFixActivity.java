@@ -77,6 +77,9 @@ public class PetProfileFixActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        etext1 = findViewById(R.id.PetprofileFixEditText1);
+        etext2 = findViewById(R.id.PetprofileFixEditText2);
+        etext3 = findViewById(R.id.PetprofileFixEditText3);
         switch (item.getItemId()) {
             case android.R.id.home://toolbar의 back키 눌렀을 때 동작
                 finish();
@@ -85,9 +88,15 @@ public class PetProfileFixActivity extends AppCompatActivity {
                 if (imagePath.length() > 0) { // 이미지 경로가 있을 경우
                     intent = new Intent(getApplicationContext(), PetProfileActivity.class);
                     intent.putExtra("path", imagePath);
+                    intent.putExtra("pname", etext1.getText().toString());
+                    intent.putExtra("pgender", etext2.getText().toString());
+                    intent.putExtra("pbirthday", etext3.getText().toString());
                     startActivity(intent);
                 } else {
-                    Intent intent = new Intent(getApplicationContext(), PetProfileActivity.class);
+                    intent = new Intent(getApplicationContext(), PetProfileActivity.class);
+                    intent.putExtra("pname", etext1.getText().toString());
+                    intent.putExtra("pgender", etext2.getText().toString());
+                    intent.putExtra("pbirthday", etext3.getText().toString());
                     startActivity(intent);
                 }
                 return true;

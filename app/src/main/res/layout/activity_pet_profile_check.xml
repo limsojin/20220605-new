@@ -73,14 +73,13 @@
         android:layout_width="75dp"
         android:layout_height="65dp"
         android:layout_gravity="center"
-        android:src="@drawable/profile11"
+        android:src="@drawable/pro15"
         app:civ_border_color="#000000"
         app:civ_border_overlay="true"
         app:civ_border_width="1dp"
-        tools:ignore="MissingConstraints"
-        app:layout_constraintTop_toTopOf="@id/guideline3"
         app:layout_constraintLeft_toLeftOf="@id/guideline1"
-        />
+        app:layout_constraintTop_toTopOf="@id/guideline3"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/PetTextView"

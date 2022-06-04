@@ -29,7 +29,7 @@ public class JoinActivity2 extends AppCompatActivity {
 
         Button overlap = (Button) findViewById(R.id.overlap);
         Button okbtn = (Button) findViewById(R.id.okbtn);
-        Button nextbtn = (Button) findViewById(R.id.nextbtn3);
+        Button nextbtn = (Button) findViewById(R.id.nextbtn);
         EditText email1 = (EditText) findViewById(R.id.email1);
         EditText password2 = (EditText) findViewById(R.id.password2);
         EditText password3 = (EditText) findViewById(R.id.password3);
@@ -42,8 +42,7 @@ public class JoinActivity2 extends AppCompatActivity {
 
                 emailSt= email1.getText().toString();
                 passwordSt2 = password2.getText().toString();
-                passwordSt3 = password2.getText().toString();
-
+                passwordSt3 = password3.getText().toString();
                 if(emailSt.length() == 0 || passwordSt2.length() == 0){
                     Toast toast = Toast.makeText(JoinActivity2.this, "아이디와 비밀번호는 필수 입력사항입니다.", Toast.LENGTH_SHORT);
                     toast.show();
@@ -60,28 +59,53 @@ public class JoinActivity2 extends AppCompatActivity {
         okbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!(password2.equals(password3))){
+                emailSt= email1.getText().toString();
+                passwordSt2 = password2.getText().toString();
+                passwordSt3 = password3.getText().toString();
+
+                if (!(passwordSt2.equals(passwordSt3))){
                     Toast toast = Toast.makeText(JoinActivity2.this, "비밀번호 재입력이 틀렸습니다", Toast.LENGTH_SHORT);
+                    toast.show();
+                }else{
+                    Toast toast = Toast.makeText(JoinActivity2.this, "비밀번호가 일치합니다", Toast.LENGTH_SHORT);
+                    toast.show();
                 }
             }
         });
+
         overlap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                emailSt= email1.getText().toString();
+                passwordSt2 = password2.getText().toString();
+                passwordSt3 = password3.getText().toString();
                 SQLiteDatabase db = myDbHelper.getReadableDatabase();
                 Cursor c =db.rawQuery("SELECT * FROM " + Member.TABLE_NAME, null);
                 if(c.moveToFirst()){
                     do{
                         String email = c.getString(0);
                         Log.i(TAG,"email: " + email);
-                        emailSt= email1.getText().toString();
+
                         if(email.equals(emailSt)){
                             Log.i(TAG, "emailSt: " + emailSt);
                             Toast toast = Toast.makeText(JoinActivity2.this, "이미 존재하는 이메일입니다.", Toast.LENGTH_SHORT);
                             toast.show();
+                        }else if(!(email.equals(emailSt))){
+                            Log.i(TAG, "emailSt: " + emailSt);
+                            Toast toast = Toast.makeText(JoinActivity2.this, "사용 가능한 이메일입니다.", Toast.LENGTH_SHORT);
+                            toast.show();
+                        }else if(email.length()==0){
+                            Log.i(TAG, "email: " + email);
+                            Toast toast = Toast.makeText(JoinActivity2.this, "사용 가능한 이메일입니다.", Toast.LENGTH_SHORT);
+                            toast.show();
                         }
                     }while(c.moveToNext());
+                }else{
+                    Toast toast = Toast.makeText(JoinActivity2.this, "사용 가능한 이메일입니다.", Toast.LENGTH_SHORT);
+                    toast.show();
                 }
+
             }
         });
     }

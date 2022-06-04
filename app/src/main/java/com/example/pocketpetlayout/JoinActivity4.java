@@ -171,6 +171,9 @@ public class JoinActivity4 extends AppCompatActivity {
                             toast.show();
                         }
                     }while(c.moveToNext());
+                }else{
+                    Toast toast = Toast.makeText(JoinActivity4.this, "사용가능한 닉네임입니다.", Toast.LENGTH_SHORT);
+                    toast.show();
                 }
             }
         });

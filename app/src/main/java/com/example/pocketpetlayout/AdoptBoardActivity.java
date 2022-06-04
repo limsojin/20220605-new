@@ -81,17 +81,17 @@ public class AdoptBoardActivity extends AppCompatActivity {
         //ListView에 QnA 게시글 나열하기위한 데이터 초기화
         InitializeQnABoardData();
 
+
+        //Listview 지정
+        ListView adoptListView = this.findViewById(R.id.adoptListView);
+
+        // ListView Adpater 지정
+        final BoardAdapter boardAdapter = new BoardAdapter(this, Adopt_BoardItems);
+
+        // ListView의 어뎁터를 셋한다.
+        adoptListView.setAdapter(boardAdapter);
+
         if(!Adopt_BoardItems.isEmpty()) {
-
-
-            //Listview 지정
-            ListView adoptListView = this.findViewById(R.id.adoptListView);
-
-            // ListView Adpater 지정
-            final BoardAdapter boardAdapter = new BoardAdapter(this, Adopt_BoardItems);
-
-            // ListView의 어뎁터를 셋한다.
-            adoptListView.setAdapter(boardAdapter);
 
             //ListView 내부 아이템이 클릭 되었을 경우?
             adoptListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -144,6 +144,19 @@ public class AdoptBoardActivity extends AppCompatActivity {
 
                 Intent intent = new Intent(getApplicationContext(), WriteActivity.class); //글쓰기 화면으로 연결
                 startActivity(intent); //액티비티 열기
+            }
+        });
+        searchBtn = findViewById(R.id.searchBtn);
+        searchWord = findViewById(R.id.searchWord);
+
+        searchBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String text = searchWord.getText().toString();
+                SearchDb(text);
+                Log.i(TAG,"text: " +text);
+                // 리스트 데이터가 변경되었으므로 아답터를 갱신하여 검색된 데이터를 화면에 보여준다.
+                boardAdapter.notifyDataSetChanged();
             }
         });
     }

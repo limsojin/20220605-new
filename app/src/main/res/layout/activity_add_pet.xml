@@ -29,7 +29,7 @@
     </androidx.appcompat.widget.Toolbar>
 
     <ImageView
-        android:id="@+id/pro2"
+        android:id="@+id/pro"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:src="@drawable/pro"

@@ -66,7 +66,12 @@ public class ProfileFragment extends Fragment {
         //---------------------
 
         DBInfo(view);
-
+        Intent intent = getActivity().getIntent();
+        String name = intent.getStringExtra("name");
+        TextView textView = view.findViewById(R.id.profileText7);
+        if(name != null){
+            textView.setText(name);
+        }
 
         // 프로필 편집 , 반려동물 편집 버튼
         ProfileFixBtn = view.findViewById(R.id.profileButton1);

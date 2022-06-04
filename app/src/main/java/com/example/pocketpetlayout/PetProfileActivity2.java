@@ -25,6 +25,7 @@ public class PetProfileActivity2 extends AppCompatActivity {
     TextView text2;
     TextView text3;
     ImageView imageView;
+    Button PetEventButton;
 
     //하단 버튼 없애기
     private View decorView;
@@ -66,6 +67,15 @@ public class PetProfileActivity2 extends AppCompatActivity {
         text1.setText(petname);
         text2.setText(petbirthday);
         text3.setText(petgender);
+
+        PetEventButton = findViewById(R.id.PetEventButton);
+
+        PetEventButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
 
         // 반려동물 프로필 변경 페이지 이동 버튼 이벤트
         Button button = findViewById(R.id.PetProfileButton1);
@@ -130,5 +140,6 @@ public class PetProfileActivity2 extends AppCompatActivity {
         c.close();
         db.close();
     }
+
 
 }
