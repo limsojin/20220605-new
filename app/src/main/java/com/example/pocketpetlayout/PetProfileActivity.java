@@ -78,7 +78,7 @@ public class PetProfileActivity extends AppCompatActivity {
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view){
-                Intent intent = new Intent(getApplicationContext(), PetProfileCheckActivity.class);
+                Intent intent = new Intent(getApplicationContext(), PetProfileAddActivity.class);
                 startActivity(intent);
             }
         });
